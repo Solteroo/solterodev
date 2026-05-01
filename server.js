@@ -4,6 +4,11 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import authRoutes from './auth.js';
+import usersRoutes from './users.js';
+import servicesRoutes from './services.js';
+import messagesRoutes from './messages.js';
+import ordersRoutes from './orders.js';
 
 dotenv.config();
 
