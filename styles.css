@@ -1,0 +1,267 @@
+/* ============ CUSTOM STYLES ============ */
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d4af37;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #c99b2f;
+}
+
+/* Nav Links */
+.nav-link {
+  @apply text-gray-400 hover:text-white transition-colors duration-200 font-medium;
+}
+
+.nav-link.active {
+  @apply text-gold;
+}
+
+/* Gradient Text */
+.gradient-text {
+  background: linear-gradient(135deg, #ffffff 0%, #d4af37 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Card Hover Effects */
+.card-hover {
+  @apply transition-all duration-300 hover:scale-105 hover:shadow-2xl;
+}
+
+.card-glow {
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+}
+
+.card-glow:hover {
+  box-shadow: 0 0 40px rgba(212, 175, 55, 0.5);
+}
+
+/* Button Animations */
+.btn-primary {
+  @apply px-6 py-3 bg-gold text-dark font-semibold rounded-lg transition-all duration-300;
+}
+
+.btn-primary:hover {
+  @apply bg-gold/90 transform scale-105;
+}
+
+.btn-secondary {
+  @apply px-6 py-3 bg-dark-secondary text-white font-semibold rounded-lg border border-gray-700 transition-all duration-300;
+}
+
+.btn-secondary:hover {
+  @apply border-gold bg-dark-secondary/80;
+}
+
+/* Loading Animation */
+@keyframes pulse-gold {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse-gold {
+  animation: pulse-gold 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* Slide In Animation */
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.slide-in {
+  animation: slideIn 0.5s ease-out;
+}
+
+/* Story Slider */
+.story-container {
+  @apply flex space-x-4 overflow-x-auto pb-4;
+  scrollbar-width: thin;
+  scrollbar-color: #d4af37 #1a1a1a;
+}
+
+.story-item {
+  @apply min-w-[120px] cursor-pointer transition-transform duration-300;
+}
+
+.story-item:hover {
+  @apply transform scale-110;
+}
+
+/* Service Card */
+.service-card {
+  @apply bg-dark-secondary rounded-xl p-6 border border-gray-800 transition-all duration-300;
+}
+
+.service-card:hover {
+  @apply border-gold shadow-lg;
+  box-shadow: 0 10px 40px rgba(212, 175, 55, 0.2);
+}
+
+/* Chat Bubble */
+.chat-bubble {
+  @apply max-w-[70%] rounded-lg p-3 mb-2;
+}
+
+.chat-bubble.sent {
+  @apply bg-gold text-dark ml-auto;
+}
+
+.chat-bubble.received {
+  @apply bg-dark-secondary text-white mr-auto;
+}
+
+/* VIP Badge */
+.vip-badge {
+  @apply inline-flex items-center px-2 py-1 text-xs font-semibold rounded-full;
+}
+
+.vip-badge.vip {
+  @apply bg-gold/20 text-gold border border-gold;
+}
+
+.vip-badge.premium {
+  @apply bg-purple-500/20 text-purple-400 border border-purple-500;
+}
+
+.vip-badge.admin {
+  @apply bg-red-500/20 text-red-400 border border-red-500;
+}
+
+.vip-badge.owner {
+  @apply bg-blue-500/20 text-blue-400 border border-blue-500;
+}
+
+/* Input Fields */
+.input-field {
+  @apply w-full px-4 py-3 bg-dark-secondary border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-gold transition-colors;
+}
+
+/* Modal */
+.modal-overlay {
+  @apply fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4;
+}
+
+.modal-content {
+  @apply bg-dark-secondary rounded-xl max-w-lg w-full border border-gray-800 shadow-2xl;
+}
+
+/* Notification Badge */
+.notification-badge {
+  @apply absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center;
+}
+
+/* Skeleton Loading */
+.skeleton {
+  @apply bg-dark-secondary animate-pulse rounded;
+}
+
+/* Grid Layouts */
+.grid-auto-fit {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Hero Section */
+.hero-gradient {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+}
+
+/* Glassmorphism */
+.glass {
+  background: rgba(26, 26, 26, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .story-item {
+    min-width: 100px;
+  }
+  
+  .service-card {
+    padding: 1rem;
+  }
+  
+  .chat-bubble {
+    max-width: 85%;
+  }
+}
+
+/* Dark Mode Toggle */
+body.light-mode {
+  @apply bg-white text-dark;
+}
+
+body.light-mode .bg-dark {
+  @apply bg-white;
+}
+
+body.light-mode .bg-dark-secondary {
+  @apply bg-gray-100;
+}
+
+body.light-mode .text-white {
+  @apply text-dark;
+}
+
+body.light-mode .border-gray-800 {
+  @apply border-gray-200;
+}
+
+/* Transitions */
+* {
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Print Styles */
+@media print {
+  nav, footer {
+    display: none;
+  }
+}
