@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="tm">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Soltero Dev - Professional Portfolio & Marketplace Platform">
+  <meta name="theme-color" content="#0a0a0a">
+  
+  <!-- PWA Meta Tags -->
+  <link rel="manifest" href="/manifest.json">
+  <link rel="apple-touch-icon" href="/logo-192.png">
+  
+  <title>Soltero Dev - Portfolio & Marketplace</title>
+  
+  <!-- TailwindCSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Framer Motion CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/framer-motion@10.16.4/dist/framer-motion.js"></script>
+  
+  <!-- Custom Tailwind Config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gold: '#d4af37',
+            dark: '#0a0a0a',
+            'dark-secondary': '#1a1a1a'
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-dark text-white font-sans antialiased">
+  
+  <!-- App Root -->
+  <div id="app">
+    <!-- Loading Screen -->
+    <div id="loading" class="fixed inset-0 bg-dark flex items-center justify-center z-50">
+      <div class="text-center">
+        <div class="mb-6">
+          <div class="text-6xl font-bold mb-2">
+            <span class="text-white">Soltero</span>
+            <span class="text-gold">Dev</span>
+          </div>
+          <div class="text-gray-400 text-lg">Loading...</div>
+        </div>
+        <div class="w-64 h-1 bg-dark-secondary rounded-full overflow-hidden">
+          <div class="h-full bg-gold animate-pulse" style="width: 60%"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 w-full bg-dark/90 backdrop-blur-lg border-b border-gray-800 z-40">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <!-- Logo -->
+          <div class="flex items-center space-x-3 cursor-pointer" onclick="navigateTo('home')">
+            <div class="w-10 h-10 bg-gold/10 rounded-lg flex items-center justify-center">
+              <span class="text-gold font-bold text-xl">S</span>
+            </div>
+            <div class="hidden sm:block">
+              <span class="text-white font-bold text-xl">Soltero</span>
+              <span class="text-gold font-bold text-xl">Dev</span>
+            </div>
+          </div>
+
+          <!-- Desktop Menu -->
+          <div class="hidden md:flex items-center space-x-6">
+            <a href="#" onclick="navigateTo('home')" class="nav-link">Home</a>
+            <a href="#" onclick="navigateTo('services')" class="nav-link">Services</a>
+            <a href="#" onclick="navigateTo('projects')" class="nav-link">Projects</a>
+            <a href="#" onclick="navigateTo('about')" class="nav-link">About</a>
+          </div>
+
+          <!-- Right Side -->
+          <div class="flex items-center space-x-4">
+            <!-- Language Toggle -->
+            <select id="language-select" class="bg-dark-secondary text-white px-3 py-1 rounded-lg border border-gray-700 text-sm">
+              <option value="tm">TM</option>
+              <option value="uz">UZ</option>
+              <option value="ru">RU</option>
+              <option value="en">EN</option>
+            </select>
+
+            <!-- Theme Toggle -->
+            <button id="theme-toggle" class="p-2 rounded-lg bg-dark-secondary hover:bg-gray-800 transition">
+              <svg class="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/>
+              </svg>
+            </button>
+
+            <!-- User Menu -->
+            <div id="user-menu" class="relative">
+              <!-- Not Logged In -->
+              <button id="login-btn" class="px-4 py-2 bg-gold text-dark font-semibold rounded-lg hover:bg-gold/90 transition">
+                Login
+              </button>
+              
+              <!-- Logged In (Hidden by default) -->
+              <div id="user-profile" class="hidden">
+                <button class="flex items-center space-x-2">
+                  <img id="user-avatar" src="" alt="Profile" class="w-8 h-8 rounded-full">
+                  <span id="user-name" class="text-sm font-medium"></span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content" class="pt-16 min-h-screen">
+      <!-- Content will be loaded here dynamically -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark-secondary border-t border-gray-800 mt-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div>
+            <div class="flex items-center space-x-2 mb-4">
+              <span class="text-white font-bold text-xl">Soltero</span>
+              <span class="text-gold font-bold text-xl">Dev</span>
+            </div>
+            <p class="text-gray-400 text-sm">
+              Building Intelligent Web & AI Solutions
+            </p>
+          </div>
+          
+          <div>
+            <h3 class="text-white font-semibold mb-4">Services</h3>
+            <ul class="space-y-2 text-sm text-gray-400">
+              <li><a href="#" class="hover:text-gold transition">Web Development</a></li>
+              <li><a href="#" class="hover:text-gold transition">AI Solutions</a></li>
+              <li><a href="#" class="hover:text-gold transition">Design</a></li>
+              <li><a href="#" class="hover:text-gold transition">Automation</a></li>
+            </ul>
+          </div>
+          
+          <div>
+            <h3 class="text-white font-semibold mb-4">Contact</h3>
+            <ul class="space-y-2 text-sm text-gray-400">
+              <li>yrejepov1@gmail.com</li>
+              <li>+99361403543</li>
+              <li>IMO: +918826816148</li>
+            </ul>
+          </div>
+          
+          <div>
+            <h3 class="text-white font-semibold mb-4">Follow</h3>
+            <div class="flex space-x-4">
+              <!-- Social Icons -->
+              <a href="#" class="text-gray-400 hover:text-gold transition">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.879V14.89h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.989C18.343 21.129 22 16.99 22 12c0-5.523-4.477-10-10-10z"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
+          <p>&copy; 2026 Soltero Dev. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- PWA Install Prompt -->
+  <div id="pwa-install-prompt" class="hidden fixed bottom-4 left-4 right-4 md:left-auto md:w-96 bg-dark-secondary border border-gold rounded-lg p-4 shadow-2xl z-50">
+    <div class="flex items-start justify-between mb-3">
+      <div class="flex items-center space-x-3">
+        <div class="w-12 h-12 bg-gold/10 rounded-lg flex items-center justify-center">
+          <span class="text-gold font-bold text-2xl">S</span>
+        </div>
+        <div>
+          <h3 class="text-white font-semibold">Install Soltero Dev</h3>
+          <p class="text-gray-400 text-sm">Add to home screen</p>
+        </div>
+      </div>
+      <button id="pwa-close" class="text-gray-400 hover:text-white">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+        </svg>
+      </button>
+    </div>
+    <button id="pwa-install" class="w-full px-4 py-2 bg-gold text-dark font-semibold rounded-lg hover:bg-gold/90 transition">
+      Install App
+    </button>
+  </div>
+
+  <!-- Main App Script -->
+  <script src="app.js"></script>
+</body>
+</html>
